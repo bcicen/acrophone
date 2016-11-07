@@ -11,9 +11,12 @@ type Acrophone struct {
 }
 
 func (a *Acrophone) Lookup(char string) (string, error) {
+	char = strings.ToLower(char)
+
 	if len(char) > 1 {
 		return "", fmt.Errorf("Lookup() accepts single character argument only")
 	}
+
 	if res, ok := a.charMap[char]; ok == false {
 		return "", fmt.Errorf("unable to find match for character: %s", char)
 	} else {
