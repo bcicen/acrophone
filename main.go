@@ -6,37 +6,38 @@ import (
 	"strings"
 )
 
-type Acrophone struct {
-	charMap map[string]string
-}
-
-func (a *Acrophone) Lookup(char string) (string, error) {
-	char = strings.ToLower(char)
-
-	if len(char) > 1 {
-		return "", fmt.Errorf("Lookup() accepts single character argument only")
-	}
-
-	if res, ok := a.charMap[char]; ok == false {
-		return "", fmt.Errorf("unable to find match for character: %s", char)
-	} else {
-		return res, nil
-	}
-}
+//type Acrophone struct {
+//	cmap charMap
+//}
+//
+//func (a *Acrophone) Lookup(char string) (string, error) {
+//	char = strings.ToLower(char)
+//
+//	if len(char) > 1 {
+//		return "", fmt.Errorf("Lookup() accepts single character argument only")
+//	}
+//
+//	if res, ok := a.cmap[char]; ok == false {
+//		return "", fmt.Errorf("unable to find match for character: %s", char)
+//	} else {
+//		return res, nil
+//	}
+//}
 
 func main() {
 	var output []string
+	var cmap charMap
 
 	if len(os.Args) < 2 {
 		fmt.Println("usage: acrophone <input>")
 		os.Exit(1)
 	}
 
-	a := &Acrophone{NatoMap}
+	cmap = NatoMap
 
 	input := strings.Join(os.Args[1:], "")
 	for _, char := range input {
-		result, err := a.Lookup(string(char))
+		result, err := cmap.Lookup(string(char))
 		if err != nil {
 			panic(err)
 		}
