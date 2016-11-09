@@ -1,27 +1,6 @@
-package main
+package alphabets
 
-import (
-	"fmt"
-	"strings"
-)
-
-type charMap map[string]string
-
-func (cmap charMap) Lookup(char string) (string, error) {
-	char = strings.ToLower(char)
-
-	if len(char) > 1 {
-		return "", fmt.Errorf("Lookup() accepts single character argument only")
-	}
-
-	if res, ok := cmap[char]; ok == false {
-		return "", fmt.Errorf("unable to find match for character: %s", char)
-	} else {
-		return res, nil
-	}
-}
-
-var NatoMap = charMap{
+var Nato = Alphabet{
 	"-":        "Dash",
 	"0":        "Zero",
 	"1":        "One",

@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"os"
 	"strings"
+
+	"github.com/bcicen/acrophone/alphabets"
 )
 
 //type Acrophone struct {
@@ -26,14 +28,14 @@ import (
 
 func main() {
 	var output []string
-	var cmap charMap
+	var cmap alphabets.Alphabet
 
 	if len(os.Args) < 2 {
 		fmt.Println("usage: acrophone <input>")
 		os.Exit(1)
 	}
 
-	cmap = NatoMap
+	cmap = alphabets.Nato
 
 	input := strings.Join(os.Args[1:], "")
 	for _, char := range input {
