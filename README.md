@@ -9,10 +9,6 @@ Download the latest release for your platform:
 
 #### OS X
 
-```brew
-brew install acrophone
-```
-or
 ```bash
 curl -Lo acrophone https://github.com/bcicen/acrophone/releases/download/v0.1/acrophone-0.1-darwin-amd64
 sudo mv acrophone /usr/local/bin/
