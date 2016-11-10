@@ -8,6 +8,11 @@ import (
 	"github.com/bcicen/acrophone/alphabets"
 )
 
+var (
+	build   = ""
+	version = "dev-build"
+)
+
 //type Acrophone struct {
 //	cmap charMap
 //}
@@ -31,6 +36,7 @@ func main() {
 	var cmap alphabets.Alphabet
 
 	if len(os.Args) < 2 {
+		fmt.Printf("acrophone v%s build %s\n", version, build)
 		fmt.Println("usage: acrophone <input>")
 		os.Exit(1)
 	}
