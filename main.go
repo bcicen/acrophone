@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	"github.com/bcicen/acrophone/alphabets"
+	"github.com/codegangsta/cli"
 )
 
 var (
@@ -13,44 +14,44 @@ var (
 	version = "dev-build"
 )
 
-//type Acrophone struct {
-//	cmap charMap
-//}
-//
-//func (a *Acrophone) Lookup(char string) (string, error) {
-//	char = strings.ToLower(char)
-//
-//	if len(char) > 1 {
-//		return "", fmt.Errorf("Lookup() accepts single character argument only")
-//	}
-//
-//	if res, ok := a.cmap[char]; ok == false {
-//		return "", fmt.Errorf("unable to find match for character: %s", char)
-//	} else {
-//		return res, nil
-//	}
-//}
+func printFullVersion(c *cli.Context) {
+	fmt.Fprintf(c.App.Writer, "%v version %v, build %v\n", c.App.Name, c.App.Version, build)
+}
 
 func main() {
 	var output []string
 	var cmap alphabets.Alphabet
 
-	if len(os.Args) < 2 {
-		fmt.Printf("acrophone v%s build %s\n", version, build)
-		fmt.Println("usage: acrophone <input>")
-		os.Exit(1)
-	}
+	cli.VersionPrinter = printFullVersion
 
-	cmap = alphabets.Nato
-
-	input := strings.Join(os.Args[1:], "")
-	for _, char := range input {
-		result, err := cmap.Lookup(string(char))
-		if err != nil {
-			panic(err)
+	app := cli.NewApp()
+	app.Name = "acrophone"
+	app.Usage = "convert text to phonetic spelling"
+	app.Version = version
+	//app.Flags = []cli.Flag{
+	//cli.StringFlag{
+	//Name:  "alphabet, a",
+	//Usage: "Phonetic alphabet to use",
+	//},
+	//}
+	app.Action = func(c *cli.Context) {
+		if len(c.Args()) < 1 {
+			fmt.Printf("no argument provided")
+			os.Exit(1)
 		}
-		output = append(output, result)
+
+		cmap = alphabets.Nato
+		input := strings.Join(c.Args(), "")
+		for _, char := range input {
+			result, err := cmap.Lookup(string(char))
+			if err != nil {
+				panic(err)
+			}
+			output = append(output, result)
+		}
+
+		fmt.Println(strings.Join(output, " "))
 	}
 
-	fmt.Println(strings.Join(output, " "))
+	app.Run(os.Args)
 }
