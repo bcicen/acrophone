@@ -60,5 +60,14 @@ func main() {
 		fmt.Println(strings.Join(output, " "))
 	}
 
-	app.Run(os.Args)
+	// hacky way of getting around reserved command/arg words
+	var newArgs []string
+	for _, arg := range os.Args {
+		if arg == "help" || arg == "version" {
+			arg += "."
+		}
+		newArgs = append(newArgs, arg)
+	}
+
+	app.Run(newArgs)
 }
