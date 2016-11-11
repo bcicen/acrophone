@@ -5,6 +5,14 @@ import (
 	"strings"
 )
 
+type LookupError struct {
+	char string
+}
+
+func (n LookupError) Error() string {
+	return fmt.Sprintf("unable to find match for character: %s", n.char)
+}
+
 type Alphabet map[string]string
 
 func (a Alphabet) Lookup(char string) (string, error) {
@@ -15,7 +23,8 @@ func (a Alphabet) Lookup(char string) (string, error) {
 	}
 
 	if res, ok := a[char]; ok == false {
-		return "", fmt.Errorf("unable to find match for character: %s", char)
+		err := LookupError{char}
+		return "", err
 	} else {
 		return res, nil
 	}
