@@ -5,6 +5,10 @@ import (
 	"strings"
 )
 
+var All = map[string]Alphabet{
+	"nato": Nato,
+}
+
 type LookupError struct {
 	char string
 }

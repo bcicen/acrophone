@@ -28,19 +28,26 @@ func main() {
 	app.Name = "acrophone"
 	app.Usage = "convert text to phonetic spelling"
 	app.Version = version
-	//app.Flags = []cli.Flag{
-	//cli.StringFlag{
-	//Name:  "alphabet, a",
-	//Usage: "Phonetic alphabet to use",
-	//},
-	//}
+	app.Flags = []cli.Flag{
+		cli.StringFlag{
+			Name:  "alphabet, a",
+			Usage: "Phonetic alphabet to use",
+			Value: "nato",
+		},
+	}
 	app.Action = func(c *cli.Context) {
 		if len(c.Args()) < 1 {
-			fmt.Printf("no argument provided")
+			fmt.Println("no argument provided")
 			os.Exit(1)
 		}
 
-		cmap = alphabets.Nato
+		if _, ok := alphabets.All[c.String("alphabet")]; ok == false {
+			fmt.Printf("invalid alphabet: %s\n", c.String("alphabet"))
+			os.Exit(1)
+		}
+
+		cmap = alphabets.All[c.String("alphabet")]
+
 		input := strings.Join(c.Args(), "")
 		for _, char := range input {
 			result, err := cmap.Lookup(string(char))
