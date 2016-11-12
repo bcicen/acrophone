@@ -27,6 +27,7 @@ func main() {
 	app := cli.NewApp()
 	app.Name = "acrophone"
 	app.Usage = "convert text to phonetic spelling"
+	app.UsageText = "acrophone [options] [input text]"
 	app.Version = version
 	app.Flags = []cli.Flag{
 		cli.StringFlag{
