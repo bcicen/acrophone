@@ -18,6 +18,12 @@ func printFullVersion(c *cli.Context) {
 	fmt.Fprintf(c.App.Writer, "%v version %v, build %v\n", c.App.Name, c.App.Version, build)
 }
 
+func printAlphabets(c *cli.Context) {
+	for name, _ := range alphabets.All {
+		fmt.Fprintf(c.App.Writer, "%s\n", name)
+	}
+}
+
 func main() {
 	var output []string
 	var cmap alphabets.Alphabet
@@ -36,8 +42,17 @@ func main() {
 			Usage: "Phonetic alphabet to use",
 			Value: "nato",
 		},
+		cli.BoolFlag{
+			Name:  "list, l",
+			Usage: "List available phonetic alphabets",
+		},
 	}
 	app.Action = func(c *cli.Context) {
+		if c.Bool("list") {
+			printAlphabets(c)
+			os.Exit(0)
+		}
+
 		if len(c.Args()) < 1 {
 			fmt.Println("no argument provided")
 			os.Exit(1)
