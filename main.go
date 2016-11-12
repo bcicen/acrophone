@@ -28,6 +28,7 @@ func main() {
 	app.Name = "acrophone"
 	app.Usage = "convert text to phonetic spelling"
 	app.UsageText = "acrophone [options] [input text]"
+	app.HideHelp = true
 	app.Version = version
 	app.Flags = []cli.Flag{
 		cli.StringFlag{
@@ -61,14 +62,5 @@ func main() {
 		fmt.Println(strings.Join(output, " "))
 	}
 
-	// hacky way of getting around reserved command/arg words
-	var newArgs []string
-	for _, arg := range os.Args {
-		if arg == "help" || arg == "version" {
-			arg += "."
-		}
-		newArgs = append(newArgs, arg)
-	}
-
-	app.Run(newArgs)
+	app.Run(os.Args)
 }
