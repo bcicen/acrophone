@@ -1,7 +1,6 @@
 # acrophone
 
-Easily convert text to phonetic spelling
-
+Commandline utility to easily convert text to phonetic spelling
 
 ## Installing
 
