@@ -29,3 +29,11 @@ Simply provide one or more words as an argument:
 $ acrophone hello
 Hotel Echo Lima Lima Oscar
 ```
+
+## Options
+
+Option | Description
+--- | ---
+--alphabet <value>, -a <value> |  Phonetic alphabet to use (default: "nato")
+--list, -l | List available phonetic alphabets
+--version, -v | Print the version
