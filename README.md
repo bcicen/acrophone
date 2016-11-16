@@ -9,7 +9,7 @@ Download the latest release for your platform:
 #### OS X
 
 ```bash
-curl -Lo acrophone https://github.com/bcicen/acrophone/releases/download/v0.1/acrophone-0.1-darwin-amd64
+curl -Lo acrophone https://github.com/bcicen/acrophone/releases/download/v0.2/acrophone-0.2-darwin-amd64
 sudo mv acrophone /usr/local/bin/
 sudo chmod +x /usr/local/bin/acrophone
 ```
@@ -17,7 +17,7 @@ sudo chmod +x /usr/local/bin/acrophone
 #### Linux
 
 ```bash
-wget https://github.com/bcicen/acrophone/releases/download/v0.1/acrophone-0.1-linux-amd64 -O acrophone
+wget https://github.com/bcicen/acrophone/releases/download/v0.2/acrophone-0.2-linux-amd64 -O acrophone
 sudo mv acrophone /usr/local/bin/
 sudo chmod +x /usr/local/bin/acrophone
 ```
