@@ -65,13 +65,18 @@ func main() {
 
 		cmap = alphabets.All[c.String("alphabet")]
 
+		var ignored []string
 		input := strings.Join(c.Args(), "")
 		for _, char := range input {
 			result, err := cmap.Lookup(string(char))
 			if err != nil {
-				panic(err)
+				ignored = append(ignored, string(char))
+			} else {
+				output = append(output, result)
 			}
-			output = append(output, result)
+		}
+		if len(ignored) > 0 {
+			fmt.Printf("warning: ignored non-standard characters: %s\n", strings.Join(ignored, ","))
 		}
 
 		fmt.Println(strings.Join(output, " "))
