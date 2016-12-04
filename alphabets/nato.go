@@ -35,7 +35,7 @@ var Nato = Alphabet{
 	"u":        "Uniform",
 	"v":        "Victor",
 	"w":        "Whiskey",
-	"x":        "X-ray or Xray",
+	"x":        "X-ray",
 	"y":        "Yankee",
 	"z":        "Zulu",
 	".":        "Point",
