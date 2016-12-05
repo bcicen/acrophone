@@ -1,6 +1,7 @@
 package alphabets
 
 var NYPD = Alphabet{
+	"desc":     "New York Police",
 	"-":        "Dash",
 	"0":        "Zero",
 	"1":        "One",

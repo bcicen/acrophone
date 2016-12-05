@@ -19,8 +19,8 @@ func printFullVersion(c *cli.Context) {
 }
 
 func printAlphabets(c *cli.Context) {
-	for name, _ := range alphabets.All {
-		fmt.Fprintf(c.App.Writer, "%s\n", name)
+	for name, a := range alphabets.All {
+		fmt.Fprintf(c.App.Writer, "%s (%s)\n", name, a["desc"])
 	}
 }
 

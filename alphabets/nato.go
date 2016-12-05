@@ -1,6 +1,7 @@
 package alphabets
 
 var Nato = Alphabet{
+	"desc":     "NATO/ICAO Iternational",
 	"-":        "Dash",
 	"0":        "Zero",
 	"1":        "One",
