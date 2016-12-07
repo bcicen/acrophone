@@ -30,6 +30,15 @@ $ acrophone hello
 Hotel Echo Lima Lima Oscar
 ```
 
+## Alphabets
+
+Multiple phonetic alphabets are included and may be specified using the `-a` option.
+
+Alphabet | Description
+--- | ---
+nato | NATO/ICAO Iternational
+nypd | New York Police
+
 ## Options
 
 Option | Description
