@@ -40,7 +40,6 @@ var Nato = Alphabet{
 	"y":        "Yankee",
 	"z":        "Zulu",
 	".":        "Point",
-	"EOL":      "<Stop>",
 	"hundred":  "Hundred",
 	"thousand": "Thousand",
 }

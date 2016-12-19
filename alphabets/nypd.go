@@ -40,7 +40,6 @@ var NYPD = Alphabet{
 	"y":        "Young",
 	"z":        "Zebra",
 	".":        "Point",
-	"EOL":      "<Stop>",
 	"hundred":  "Hundred",
 	"thousand": "Thousand",
 }
