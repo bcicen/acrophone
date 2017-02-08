@@ -8,6 +8,7 @@ import (
 var All = map[string]Alphabet{
 	"nato": Nato,
 	"nypd": NYPD,
+	//"spanish": Spanish,
 }
 
 type LookupError struct {
