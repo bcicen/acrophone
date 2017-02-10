@@ -67,7 +67,7 @@ func main() {
 
 		var ignored []string
 		input := strings.Join(c.Args(), "")
-		for _, char := range input {
+		for _, char := range strings.Split(input, "") {
 			result, err := cmap.Lookup(string(char))
 			if err != nil {
 				ignored = append(ignored, string(char))
