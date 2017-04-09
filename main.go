@@ -7,6 +7,7 @@ import (
 
 	"github.com/bcicen/acrophone/alphabets"
 	"github.com/codegangsta/cli"
+	"github.com/fatih/color"
 )
 
 var (
@@ -22,6 +23,11 @@ func printAlphabets(c *cli.Context) {
 	for name, a := range alphabets.All {
 		fmt.Fprintf(c.App.Writer, "%s (%s)\n", name, a["desc"])
 	}
+}
+
+func warn(msg string) {
+	yellow := color.New(color.FgYellow).SprintFunc()
+	fmt.Printf("%s: %s", yellow("warning"), msg)
 }
 
 func main() {
@@ -76,7 +82,7 @@ func main() {
 			}
 		}
 		if len(ignored) > 0 {
-			fmt.Printf("warning: ignored non-standard characters: %s\n", strings.Join(ignored, ","))
+			warn(fmt.Sprintf("ignored non-standard characters: %s\n", strings.Join(ignored, ",")))
 		}
 
 		fmt.Println(strings.Join(output, " "))
