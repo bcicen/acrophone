@@ -25,6 +25,11 @@ func printAlphabets(c *cli.Context) {
 	}
 }
 
+func pPrint(s string) {
+	green := color.New(color.FgGreen).SprintFunc()
+	fmt.Printf(" %s%s\n", green(string(s[0])), s[1:])
+}
+
 func warn(msg string) {
 	yellow := color.New(color.FgYellow).SprintFunc()
 	fmt.Printf("%s: %s", yellow("warning"), msg)
@@ -51,6 +56,10 @@ func main() {
 		cli.BoolFlag{
 			Name:  "list, l",
 			Usage: "List available phonetic alphabets",
+		},
+		cli.BoolFlag{
+			Name:  "pretty, p",
+			Usage: "Enable line-seperated output",
 		},
 	}
 	app.Action = func(c *cli.Context) {
@@ -84,8 +93,13 @@ func main() {
 		if len(ignored) > 0 {
 			warn(fmt.Sprintf("ignored non-standard characters: %s\n", strings.Join(ignored, ",")))
 		}
-
-		fmt.Println(strings.Join(output, " "))
+		if c.Bool("pretty") {
+			for _, l := range output {
+				pPrint(l)
+			}
+		} else {
+			fmt.Println(strings.Join(output, " "))
+		}
 	}
 
 	app.Run(os.Args)
