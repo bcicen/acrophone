@@ -8,8 +8,8 @@ clean:
 build:
 	mkdir -p build
 	go get -v -d
-	GOOS=darwin GOARCH=amd64 go build -ldflags "-s -X main.version=$(VERSION) -X main.build=$(BUILD)" -o build/acrophone-$(VERSION)-darwin-amd64
-	GOOS=linux GOARCH=amd64 go build -ldflags "-s -X main.version=$(VERSION) -X main.build=$(BUILD)" -o build/acrophone-$(VERSION)-linux-amd64
+	GOOS=darwin GOARCH=amd64 go build -ldflags "-w -X main.version=$(VERSION) -X main.build=$(BUILD)" -o build/acrophone-$(VERSION)-darwin-amd64
+	GOOS=linux GOARCH=amd64 go build -ldflags "-w -X main.version=$(VERSION) -X main.build=$(BUILD)" -o build/acrophone-$(VERSION)-linux-amd64
 
 release:
 	mkdir release
